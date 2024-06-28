@@ -1,30 +1,19 @@
+import React from "react";
+import { ClerkProvider } from "@clerk/nextjs";
 
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
-  )
+    <html lang="en">
+      <head>
+        <title>Next.js 13 with Clerk</title>
+      </head>
+      <ClerkProvider>
+        <body>{children}</body>
+      </ClerkProvider>
+    </html>
+  );
 }
